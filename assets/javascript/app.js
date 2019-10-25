@@ -1,6 +1,5 @@
 // on page load, 'Trivia' heading and a 'Start' button will load
 // click start button to open trivia question list and start countdown timer
-// use radio buttons 
 // store questions and answers in arrays
 // need a countdown timer
 // use .hide() and .show() methods (eg. when you click 'start game' the button will hide and qs show
@@ -12,6 +11,12 @@
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
+
+// 
+var intervalId;
+
+//
+var time = 31;
 
 // keeps track of which number question is being displayed
 var counter = 0;
@@ -106,7 +111,7 @@ var questions = [
 // ==============================================================================
 
 // will run when page loads
-window.onload = function() {
+window.onload = function () {
     $("#start").show();
     $("#time-remaining").hide();
     $("#seconds-left").hide();
@@ -115,13 +120,13 @@ window.onload = function() {
     $("#answer-b").hide();
     $("#answer-c").hide();
     $("#answer-d").hide();
-  }
+}
 
 // click function for start button
 $("#start").on("click", function () {
     nextQ();
     $("#time-remaining").show();
-    $("#seconds-left").show(); 
+    $("#seconds-left").show();
     $("#question").show();
     $("#answer-a").show();
     $("#answer-b").show();
@@ -130,13 +135,14 @@ $("#start").on("click", function () {
     $("#start").hide();
 })
 
-  
 
-//   START() FUNCTION
-function start() {
-    $("#start").show();
 
-}
+//   START FUNCTION
+// function start() {
+//     $("#start").show();
+
+// }
+
 
 // DONE: Use setInterval to start the count here and set the clock to running.
 //   if (!clockRunning) {
@@ -144,6 +150,23 @@ function start() {
 //     clockRunning = true;
 //   }
 // }
+
+
+// Makes time remaining decrease and move to next question if time runs out
+function decrement() {
+    time--;
+    // console.log(time);
+    $("#seconds-left").text(time);
+
+    if (time === 0) {
+        counter++;
+        nextQ();
+        unanswered++;
+
+        console.log(unanswered);
+
+    }
+}
 
 
 // function to display new questions/answer options on page -- needs to run when time runs out, or if player selects an answer
@@ -156,9 +179,10 @@ var nextQ = function () {
     $("#answer-b").html(questions[counter].b);
     $("#answer-c").html(questions[counter].c);
     $("#answer-d").html(questions[counter].d);
+    clearInterval(intervalId);
+    time = 30;
+    intervalId = setInterval(decrement, 1000);
 }
-
-
 
 
 // function will run whenever option 'a' is clicked on
@@ -172,8 +196,8 @@ $("#answer-a").on("click", function () {
         counter++;
         nextQ();
     }
-//  console.log(correct);
-//  console.log(incorrect);
+    //  console.log(correct);
+    //  console.log(incorrect);
 })
 
 // function will run whenever option 'b' is clicked on
@@ -187,8 +211,8 @@ $("#answer-b").on("click", function () {
         counter++;
         nextQ();
     }
-//  console.log(correct);
-//  console.log(incorrect);
+    //  console.log(correct);
+    //  console.log(incorrect);
 })
 
 // function will run whenever option 'c' is clicked on
@@ -202,8 +226,8 @@ $("#answer-c").on("click", function () {
         counter++;
         nextQ();
     }
-//  console.log(correct);
-//  console.log(incorrect);
+    //  console.log(correct);
+    //  console.log(incorrect);
 })
 
 // function will run whenever option 'd' is clicked on
@@ -217,9 +241,11 @@ $("#answer-d").on("click", function () {
         counter++;
         nextQ();
     }
-//  console.log(correct);
-//  console.log(incorrect);
+    //  console.log(correct);
+    //  console.log(incorrect);
 })
+
+
 
 // MAIN PROCESS
 // ==============================================================================
@@ -229,15 +255,7 @@ $("#answer-d").on("click", function () {
 // when counter = questions.length, end game and show results/gif
 
 
-// MAKE START BUTTON HIDE UNLESS ON INITIAL PAGE
 
-
-// nextQ();
-
-// TIMER TO MOVE TO NEXT QUESTION AFTER 5 SECS
-// setTimeout(function(){ 
-//     nextQ; 
-// }, 5000);
 
 
 
