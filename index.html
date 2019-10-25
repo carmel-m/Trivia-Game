@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Trivia Game</title>
 </head>
 
@@ -14,13 +15,23 @@
 
     <div id="container">
 
-        <h1>Buffy Trivia Game</h1>
+        <!-- always displayed -->
+        <h1>Buffy the Vampire Slayer Trivia</h1>
+        <br>
 
+
+        
+        <!-- GAME DIV WILL BE HIDDEN ON START AND END SCREEN -->
         <div id="game">
-            <div id="question">
-                <!-- could put button here  -->
-            </div>
 
+            <div id="time-remaining">Time Remaining: <span id="seconds-left"></span> seconds</div>
+
+            <br>
+
+            <!-- question -->
+            <div id="question"></div>
+
+            <!-- answers -->
             <div id="answer-a"></div>
             <div id="answer-b"></div>
             <div id="answer-c"></div>
@@ -28,6 +39,10 @@
             <div id="answer-e"></div>
 
         </div>
+
+ <!-- START BUTTON - VISIBLE AT BEGINNING ONLY -->
+ <button id="start">Start</button>
+       
 
     </div>
 

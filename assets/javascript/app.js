@@ -100,8 +100,57 @@ var questions = [
     }
 ];
 
-// function to display new questions/answer options on page
+
+
+// FUNCTIONS
+// ==============================================================================
+
+// will run when page loads
+window.onload = function() {
+    $("#start").show();
+    $("#time-remaining").hide();
+    $("#seconds-left").hide();
+    $("#question").hide();
+    $("#answer-a").hide();
+    $("#answer-b").hide();
+    $("#answer-c").hide();
+    $("#answer-d").hide();
+  }
+
+// click function for start button
+$("#start").on("click", function () {
+    nextQ();
+    $("#time-remaining").show();
+    $("#seconds-left").show(); 
+    $("#question").show();
+    $("#answer-a").show();
+    $("#answer-b").show();
+    $("#answer-c").show();
+    $("#answer-d").show();
+    $("#start").hide();
+})
+
+  
+
+//   START() FUNCTION
+function start() {
+    $("#start").show();
+
+}
+
+// DONE: Use setInterval to start the count here and set the clock to running.
+//   if (!clockRunning) {
+//     intervalId = setInterval(count, 1000);
+//     clockRunning = true;
+//   }
+// }
+
+
+// function to display new questions/answer options on page -- needs to run when time runs out, or if player selects an answer
 var nextQ = function () {
+    $("#start").hide();
+    $("#time-remaining").show();
+    $("#seconds-left").show();
     $("#question").html(questions[counter].q);
     $("#answer-a").html(questions[counter].a);
     $("#answer-b").html(questions[counter].b);
@@ -109,8 +158,7 @@ var nextQ = function () {
     $("#answer-d").html(questions[counter].d);
 }
 
-// FUNCTIONS
-// ==============================================================================
+
 
 
 // function will run whenever option 'a' is clicked on
@@ -180,7 +228,16 @@ $("#answer-d").on("click", function () {
 
 // when counter = questions.length, end game and show results/gif
 
-nextQ();
+
+// MAKE START BUTTON HIDE UNLESS ON INITIAL PAGE
+
+
+// nextQ();
+
+// TIMER TO MOVE TO NEXT QUESTION AFTER 5 SECS
+// setTimeout(function(){ 
+//     nextQ; 
+// }, 5000);
 
 
 
